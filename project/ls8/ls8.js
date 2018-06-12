@@ -1,6 +1,6 @@
 const RAM = require('./ram');
 const CPU = require('./cpu');
-
+const fs = require('fs');
 /**
  * Load an LS8 program into memory
  *
@@ -34,6 +34,21 @@ let cpu = new CPU(ram);
 
 // TODO: get name of ls8 file to load from command line
 
-loadMemory(cpu);
+const argv = process.argv.slice(2);
+
+if (argv.length != 1) {
+    console.error("usage: filename capacity");
+    process.exit(1);
+}
+
+const filename = argv[0];
+const filedata = fs.readFileSync(filename, "utf8");
+const lines = filedata.trim().split(/[\r\n]+/g);
+
+lines.forEach((bin, idx) => {
+    if (idx) cpu.poke(idx, parseInt(bin.split(' ')[0], 2));
+});
+
+// loadMemory(cpu);
 
 cpu.startClock();
