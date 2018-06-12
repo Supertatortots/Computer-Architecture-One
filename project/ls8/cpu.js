@@ -58,13 +58,18 @@ class CPU {
      * op can be: ADD SUB MUL DIV INC DEC CMP
      */
     alu(op, regA, regB) {
+        const MUL = '10101010';
         switch (op) {
             case 'MUL': //(multiply)
-                // !!! IMPLEMENT ME
-                //should multiply stuff
-            
+                // !!! IMPLEMENT ME should multiply stuff
+                regA = regA * regB
+                break;
+            case 'ADD':
+                regA = regA + regB
+                return;
                 break;
         }
+
     }
 
     /**
