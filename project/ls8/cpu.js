@@ -62,12 +62,12 @@ class CPU {
         switch (op) {
             case 'MUL': //(multiply)
                 // !!! IMPLEMENT ME should multiply stuff
-                regA = regA * regB
+                this.reg[regA] *= this.reg[regB]
                 break;
-            case 'ADD':
-                regA = regA + regB
-                return;
-                break;
+            // case 'ADD':
+                // regA = regA + regB
+                // return;
+                // break;
         }
 
     }
