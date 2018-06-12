@@ -59,8 +59,10 @@ class CPU {
      */
     alu(op, regA, regB) {
         switch (op) {
-            case 'MUL':
+            case 'MUL': //(multiply)
                 // !!! IMPLEMENT ME
+                //should multiply stuff
+            
                 break;
         }
     }
