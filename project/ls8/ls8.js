@@ -34,21 +34,21 @@ let cpu = new CPU(ram);
 
 // TODO: get name of ls8 file to load from command line
 
-const argv = process.argv.slice(2);
+// const argv = process.argv.slice(2);
 
-if (argv.length != 1) {
-    console.error("usage: filename capacity");
-    process.exit(1);
-}
+// if (argv.length != 1) {
+//     console.error("Requires file to read!");
+//     process.exit(1);
+// }
 
-const filename = argv[0];
-const filedata = fs.readFileSync(filename, "utf8");
-const lines = filedata.trim().split(/[\r\n]+/g);
+// const filename = argv[0];
+// const filedata = fs.readFileSync(filename, "utf8");
+// const lines = filedata.trim().split(/[\r\n]+/g);
 
-lines.forEach((bin, idx) => {
-    if (idx) cpu.poke(idx, parseInt(bin.split(' ')[0], 2));
-});
+// lines.forEach((bin, idx) => {
+//     if (idx) cpu.poke(idx, parseInt(bin.split(' ')[0], 2));
+// });
 
-// loadMemory(cpu);
+loadMemory(cpu);
 
 cpu.startClock();
