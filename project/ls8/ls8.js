@@ -1,6 +1,7 @@
 const RAM = require('./ram');
 const CPU = require('./cpu');
 const fs = require('fs');
+const items = [];
 /**
  * Load an LS8 program into memory
  *
@@ -18,7 +19,20 @@ function loadMemory() {
     //     "00000000",
     //     "00000001"  // HLT       Halt and quit
     // ];
-
+    // const program = [
+    //     "10011001", // LDI R0, 8
+    //     "00000000",
+    //     "00001000",
+    //     "10011001", // LDI R1, 9
+    //     "00000001",
+    //     "00001001",
+    //     "10101010", // MUL R0, R1 < ---
+    //     "00000000",
+    //     "00000001",
+    //     "01000011", // PRN R0
+    //     "00000000",
+    //     "00000001" // HLT
+    // ];
     // Load the program into the CPU's memory a byte at a time
     for (let i = 0; i < program.length; i++) {
         cpu.poke(i, parseInt(program[i], 2));
