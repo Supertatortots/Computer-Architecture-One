@@ -7,6 +7,8 @@ const HLT = 0b00000001;
 const MUL = 0b10101010;
 const PUSH = 0b01001101;
 const POP = 0b01001100;
+const CALL = 0b01001000;
+
 
 const SP = 7
 
@@ -124,7 +126,8 @@ class CPU {
                     .ram
                     .read(this.reg[SP]);
                 this.reg[SP]++;
-                break
+                break;
+                
             default:
                 console.log('Unkown instruction: ' + IR.toString(2)); //tells you if something is invalid when you pop that in
                 this.stopClock();
