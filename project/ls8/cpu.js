@@ -15,6 +15,9 @@ const JNE = 0b01010010;
 
 const SP = 7
 
+this.FL = 0; //flag for CMP
+this.JP = 0; //flag for JMP
+
 /**
  * Class for simulating a simple Computer (CPU & memory)
  */
@@ -132,9 +135,19 @@ class CPU {
                     .read(this.reg[SP]);
                 this.reg[SP]++;
                 break;
-            case CALL:
-                this.reg
+            // case CALL: for calls and stuff still WIP
+            //     this.reg
+            //     break;
+            case CMP:
+                this.reg[operandA] === this.reg[operandB]
+                    ? (this.FL = 0b000 | 0b001)
+                    : this.reg[operandA] > this.reg[operandB]
+                        ? (this.FL = 0b000 | 0b010)
+                        : (this.FL = 0b000 | 0b100);
                 break;
+            case JMP: //jumps to address in given register
+                this.PC = this.reg[operandA];
+                this.JMP = 1;
             default:
                 console.log('Unkown instruction: ' + IR.toString(2)); //tells you if something is invalid when you pop that in
                 this.stopClock();
