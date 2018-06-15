@@ -8,7 +8,10 @@ const MUL = 0b10101010;
 const PUSH = 0b01001101;
 const POP = 0b01001100;
 const CALL = 0b01001000;
-
+const CMP = 0b10100000;
+const JMP = 0b01010000;
+const JEQ = 0b01010001;
+const JNE = 0b01010010;
 
 const SP = 7
 
@@ -119,7 +122,9 @@ class CPU {
                 break;
             case PUSH:
                 this.reg[SP]--;
-                this.ram.write(this.reg[SP], this.reg[operandA]);
+                this
+                    .ram
+                    .write(this.reg[SP], this.reg[operandA]);
                 break;
             case POP:
                 this.reg[operandA] = this
@@ -127,7 +132,9 @@ class CPU {
                     .read(this.reg[SP]);
                 this.reg[SP]++;
                 break;
-                
+            case CALL:
+                this.reg
+                break;
             default:
                 console.log('Unkown instruction: ' + IR.toString(2)); //tells you if something is invalid when you pop that in
                 this.stopClock();
